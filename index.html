@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#102b27">
+  <meta name="description" content="Private, offline-first repair shop manager. Data stays on this device.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>RepairDesk — IFTIKHAR</title>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to workspace</a>
+  <div id="privacy-banner" class="privacy-banner" role="note"><strong>Private by default.</strong> Your records stay on this device. The PIN is a convenience lock, not encryption; device/browser access and exported backups can expose records. <button class="text-button" id="dismiss-privacy" aria-label="Dismiss privacy notice">Dismiss</button></div>
+  <header class="topbar">
+    <a class="brand" href="#dashboard" aria-label="RepairDesk dashboard"><span class="brand-mark" aria-hidden="true">R</span><span><b>RepairDesk</b><small>IFTIKHAR · LOCAL WORKSPACE</small></span></a>
+    <div class="topbar-actions"><span class="local-pill"><i aria-hidden="true"></i> On this device</span><button id="lock-button" class="icon-button" type="button" aria-label="Lock app" title="Lock app">⌑</button></div>
+  </header>
+  <div class="app-layout" id="app-layout" hidden>
+    <aside class="sidebar" aria-label="Main navigation"><nav class="nav-list">
+      <a href="#dashboard" data-view="dashboard" class="nav-link active"><span aria-hidden="true">◫</span> Overview</a>
+      <a href="#jobs" data-view="jobs" class="nav-link"><span aria-hidden="true">▤</span> Repair jobs <b id="nav-job-count" class="nav-count">0</b></a>
+      <a href="#expenses" data-view="expenses" class="nav-link"><span aria-hidden="true">↘</span> Expenses</a>
+      <a href="#inventory" data-view="inventory" class="nav-link"><span aria-hidden="true">▦</span> Parts inventory</a>
+      <a href="#settings" data-view="settings" class="nav-link"><span aria-hidden="true">⚙</span> Settings & backups</a>
+    </nav><div class="sidebar-foot"><span class="avatar">I</span><span><b>IFTIKHAR</b><small>Repair shop</small></span><span class="version-tag">v1</span></div></aside>
+    <main id="main-content" tabindex="-1" class="main-content"><div id="view-root" aria-live="polite"></div></main>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation" id="mobile-nav" hidden>
+    <a href="#dashboard" data-view="dashboard" class="active"><span>◫</span><small>Home</small></a><a href="#jobs" data-view="jobs"><span>▤</span><small>Jobs</small></a><a href="#expenses" data-view="expenses"><span>↘</span><small>Costs</small></a><a href="#inventory" data-view="inventory"><span>▦</span><small>Parts</small></a><a href="#settings" data-view="settings"><span>⚙</span><small>More</small></a>
+  </nav>
+  <section class="gate" id="gate" aria-labelledby="gate-title">
+    <div class="gate-card"><a class="brand gate-brand" href="#"><span class="brand-mark">R</span><span><b>RepairDesk</b><small>IFTIKHAR · LOCAL WORKSPACE</small></span></a>
+      <div class="gate-illustration" aria-hidden="true"><span>R</span><i></i><i></i><i></i></div>
+      <p class="eyebrow" id="gate-eyebrow">YOUR SHOP, ORGANIZED</p><h1 id="gate-title">A clearer day<br>at the repair desk.</h1><p id="gate-copy" class="gate-copy">Set a local PIN to keep this workspace tucked away between sessions.</p>
+      <form id="pin-form" class="pin-form"><label for="pin-input" id="pin-label">Create a PIN</label><input id="pin-input" type="password" inputmode="numeric" autocomplete="new-password" pattern="[0-9]{4,12}" minlength="4" maxlength="12" required placeholder="4–12 digits"><div id="confirm-wrap"><label for="pin-confirm">Confirm PIN</label><input id="pin-confirm" type="password" inputmode="numeric" autocomplete="new-password" pattern="[0-9]{4,12}" minlength="4" maxlength="12" placeholder="Enter PIN again"></div><p id="pin-error" class="form-error" role="alert"></p><button class="button primary wide" id="pin-submit" type="submit">Set my PIN <span aria-hidden="true">→</span></button></form>
+      <p class="gate-note">PIN is a convenience lock, not encryption. Data and backups remain readable to someone with access to this device or browser.</p>
+    </div>
+  </section>
+  <div id="dialog-host"></div>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="vendor/chart.umd.js"></script>
+  <script type="module" src="src/app.mjs"></script>
+</body>
+</html>

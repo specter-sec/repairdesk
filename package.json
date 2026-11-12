@@ -1,0 +1,19 @@
+{
+  "name": "repairdesk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IFTIKHAR Repair Shop Manager — offline-first, local-only PWA",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/app.mjs && node --check src/core.mjs && node --check src/store.mjs && node --check sw.js && node --check tests/core.test.mjs && node --check tests/pwa.test.mjs"
+  },
+  "dependencies": {
+    "chart.js": "4.4.8",
+    "dexie": "4.0.11"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
